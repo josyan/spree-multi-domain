@@ -20,7 +20,7 @@ module Spree
                       path: ':rails_root/public/spree/logos/:id/:style/:basename.:extension',
                       convert_options: { all: '-strip -auto-orient -colorspace sRGB' }
 
-    if respond_to? :logo_content_type
+    if table_exists? && column_names.include?('logo_content_type')
       # save the w,h of the original image (from which others can be calculated)
       # we need to look at the write-queue for images which have not been saved yet
       before_save :find_dimensions, if: :logo_updated_at_changed?
