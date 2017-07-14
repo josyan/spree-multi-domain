@@ -1,13 +1,9 @@
 class AddLogoToStores < ActiveRecord::Migration
-  def self.up
-    change_table :spree_stores do |t|
-      t.string :logo_file_name
-    end
+  def up
+    add_attachment :spree_stores, :logo
   end
 
-  def self.down
-    change_table :spree_stores do |t|
-      t.remove :logo_file_name
-    end
+  def down
+    remove_attachment :spree_stores, :logo
   end
 end
